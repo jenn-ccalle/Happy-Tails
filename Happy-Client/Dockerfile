@@ -11,7 +11,7 @@ RUN npm run build
 FROM nginx:alpine
 
 # Copiar archivos compilados
-COPY --from=builder /Happy-Client/dist/Happy-Client/browser /usr/share/nginx/html
+COPY --from=builder /dist/Happy-Client/browser /usr/share/nginx/html
 
 # Configuración Nginx
 COPY nginx.conf /etc/nginx/conf.d/default.conf
