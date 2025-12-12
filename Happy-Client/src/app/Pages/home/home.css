@@ -1,0 +1,143 @@
+/* GENERAL */
+h3{
+    text-align: center;
+    color: #49261D;
+}
+
+/* MAIN */
+main{
+    padding: 2rem 0;
+    background-color: #49261D;
+}
+
+#titulo, #subtitulo{
+    text-align: center;
+    color: #FFEDE3;
+}
+
+#reservaForm{
+    width: 70%;
+    padding: 1rem 2rem;
+    border-radius: 10px;
+    background-color: #FFEDE3;
+    color: #49261D;
+}
+
+#selectMascota{
+    border-bottom: #49261D solid 1px;
+}
+
+#estancias{
+    justify-content: space-between;
+}
+
+.servicio-radio {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.estancia{
+    width: 160px;
+    height: 94px;
+    display: block;
+    text-align: center;
+    border: #49261d7d 2px solid;
+    align-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+}
+
+/* Hover */
+.estancia:hover {
+    background-color: #f8f0eab6;
+    border-color: #49261D;
+    transition: all 0.3s ease-in;
+}
+
+/* Cuando está seleccionado */
+.servicio-radio:checked + .estancia {
+    background-color: #fbf3efaa;
+    border-color: #49261D;
+    border-width: 3px;
+    font-weight: bold;
+    transition: all 0.3s ease-in;
+}
+
+/* Focus para accesibilidad de teclado */
+.servicio-radio:focus + .estancia {
+    outline: 3px solid #49261D;
+    outline-offset: 2px;
+}
+
+#direccion{
+    height: 5vh;
+    border: #49261d7d solid 2px;
+    border-radius: 10px;
+    width: 100%;
+    padding: 0.5rem;
+}
+
+.date{
+    height: 5vh;
+    border: #49261d7d solid 2px;
+    border-radius: 10px;
+}
+
+.tamano{
+    border: #49261d7d solid 2px;
+    border-radius: 10px;
+    display: block;
+    text-align: center;
+    width: 100px;
+}
+.tamano:hover {
+    background-color: #f8f0eab6;
+    border-color: #49261D;
+    transition: all 0.3s ease-in;
+}
+
+.button{
+    border-radius: 40px;
+    background-color: #FB4D00;
+    border: none;
+    color: #f5e5d8;
+    font-size: 20px;
+    font-weight: 500;
+}
+.button:hover{
+    background-color: #a73200;
+    transition: all 0.3s ease-in;
+}
+
+
+/* SECCIÓN SERVICIOS */
+section{
+    padding: 2rem;
+    background-color: #fff9f4;
+}
+
+.servicioComp{
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    width: 35%;
+}
+
+.text strong{
+    color: #49261D;
+}
+
+.opiniones{
+    display: flex;
+    justify-content: space-around;
+}
+
+.opinion{
+    border: #49261d83 solid 1px;
+    border-radius: 10px;
+    padding: 1rem;
+    background-color: #ffffff;
+    width: 25%;
+}

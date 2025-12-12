@@ -102,6 +102,35 @@ class Mascota
      */
     private $TiempoNecesidades;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Persona::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $persona;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Raza::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $raza;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Necesidades::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $necesidades;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TamanoMascota::class)
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $tamanoMascota;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Contratacion::class, mappedBy="mascotas")
+     */
+    private $contrataciones;
+
     public function getId(): ?int
     {
         return $this->id;

@@ -115,13 +115,6 @@ class Persona
         return $this;
     }
 
-    // public function setId(int $Id): self
-    // {
-    //     $this->Id = $Id;
-
-    //     return $this;
-    // }
-
     public function getDireccion(): ?string
     {
         return $this->Direccion;
