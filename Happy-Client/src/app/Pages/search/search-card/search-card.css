@@ -1,0 +1,18 @@
+.container-fluid{
+    padding: 1rem;
+    background-color: #fff7f3bc;
+}
+.foto-perfil{
+    background-color: #49261D;
+    border-radius: 9999px;
+    border: none;
+    height: 80px;
+    width: 80px;
+}
+.img-op{
+    background-color: #c3f0ff;
+    border-radius: 9999px;
+    border: none;
+    height: 30px;
+    width: 30px;
+}

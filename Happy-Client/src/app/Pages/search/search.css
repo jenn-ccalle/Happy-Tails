@@ -1,0 +1,25 @@
+.cont{
+    padding: 0.5rem;
+}
+
+.filters{
+    width: 24%;
+    padding: 1rem;
+    background-color: #CAE7E7;
+}
+
+.in , select{
+    width: 100%;
+    height: 5vh;
+    border-radius: 10px;
+    border: 1px solid ;
+}
+
+.servicesContainer{
+    padding: 0.5rem;
+}
+
+.masFiltros{
+    padding: 0.5rem;
+    background-color: #93b7b7;
+}

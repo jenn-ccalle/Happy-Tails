@@ -9,9 +9,9 @@
             </div>
             <div id="reservaForm" class="container-fluid">
                 <form action="buscarServicio" method="get"></form>
-                    <div id="selectMascota" class="d-flex justify-content-between mb-3">
-                        <p><strong>Estoy buscando un servicio para mi</strong></p>
-                        <div class="gap-5 d-flex">
+                    <div id="selectMascota" class="row mb-3 pb-2">
+                        <div class="col"><strong>Estoy buscando un servicio para mi</strong></div>
+                        <div class="col gap-5 d-flex">
                             <div class="gap-1">
                                 <input type="checkbox" name="perro" id="perro">
                                 <label for="perro" style="padding-left: 5px;">Perro</label>                         
@@ -32,7 +32,7 @@
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" aria-label="Alojamiento mascotas icono" viewBox="0 0 512 512">
                                             <path fill="#49261d" d="M200 48l112 0c4.4 0 8 3.6 8 8l0 40-128 0 0-40c0-4.4 3.6-8 8-8zm-56 8l0 424 224 0 0-424c0-30.9-25.1-56-56-56L200 0c-30.9 0-56 25.1-56 56zM416 96l0 384 32 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-32 0zM96 480l0-384-32 0C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l32 0z"/>
                                         </svg>
-                                        <p>Alojamiento de mascotas</p>
+                                        <p>Alojamiento</p>
                                     </label>
                                 </div>
                                 <div>
@@ -87,24 +87,28 @@
                         </div>
                     </div>
                     <div id="tamano">
-                        <label for="Tamaño perro"><strong>Mi mascota es</strong></label>
+                        <p><strong>Mi mascota es</strong></p>
                         <div class="d-flex gap-4">
-                            <div class="tamano d-block">
+                            <label for="pequeno" class="tamano">
+                                <input type="checkbox" name="pequeno" id="pequeno" class="d-none">
                                 <p>Pequeño</p>
                                 <p>0 - 7 kg</p>
-                            </div>
-                            <div class="tamano d-block">
+                            </label>
+                            <label for="mediano" class="tamano">
+                                <input type="checkbox" name="mediano" id="mediano" class="d-none">
                                 <p>Mediano</p>
                                 <p>7 - 18 kg</p>
-                            </div>
-                            <div class="tamano d-block">
+                            </label>
+                            <label for="grande" class="tamano">
+                                <input type="checkbox" name="grande" id="grande" class="d-none">
                                 <p>Grande</p>
                                 <p>18 - 40 kg</p>
-                            </div>
-                            <div class="tamano d-block">
+                            </label>
+                            <label for="gigante" class="tamano">
+                                <input type="checkbox" name="gigante" id="gigante" class="d-none">
                                 <p>Gigante</p>
                                 <p>40+ kg</p>
-                            </div>
+                            </label>
                             <button type="submit" aria-label="Buscar" class="button flex-grow-1">Buscar</button>
                         </div>
                     </div>

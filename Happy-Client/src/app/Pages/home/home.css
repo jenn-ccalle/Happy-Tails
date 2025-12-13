@@ -27,6 +27,11 @@ main{
     border-bottom: #49261D solid 1px;
 }
 
+#perro{
+    height: 12px;
+    width: 12px;
+}
+
 #estancias{
     justify-content: space-between;
 }
@@ -88,9 +93,13 @@ main{
 .tamano{
     border: #49261d7d solid 2px;
     border-radius: 10px;
-    display: block;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
     width: 100px;
+    height: 70px;
+    padding: 0.5rem;
 }
 .tamano:hover {
     background-color: #f8f0eab6;
