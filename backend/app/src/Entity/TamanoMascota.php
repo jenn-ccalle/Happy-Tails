@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\TamanoMascotaRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**

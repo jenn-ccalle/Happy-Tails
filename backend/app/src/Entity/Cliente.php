@@ -17,26 +17,8 @@ class Cliente
      */
     private $id;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Persona::class, inversedBy: 'cliente')
-     * @ORM\JoinColumn(name="id", referencedColumnName="id", onDelete="CASCADE")
-     * @ORM\Id
-     */
-    private ?Persona $persona = null;
-
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getPersona(): ?Persona
-    {
-        return $this->persona;
-    }
-
-    public function setPersona(?Persona $persona): static
-    {
-        $this->persona = $persona;
-        return $this;
     }
 }

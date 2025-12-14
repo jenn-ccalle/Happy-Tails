@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\MascotaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -101,35 +103,6 @@ class Mascota
      * @ORM\Column(type="smallint")
      */
     private $TiempoNecesidades;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Persona::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $persona;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Raza::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $raza;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=Necesidades::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $necesidades;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=TamanoMascota::class)
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $tamanoMascota;
-
-    /**
-     * @ORM\ManyToMany(targetEntity=Contratacion::class, mappedBy="mascotas")
-     */
-    private $contrataciones;
 
     public function getId(): ?int
     {

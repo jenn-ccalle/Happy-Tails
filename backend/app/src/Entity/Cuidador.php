@@ -52,13 +52,6 @@ class Cuidador
      */
     private $Fuma;
 
-    /**
-     * @ORM\OneToOne(targetEntity=Persona::class, inversedBy: 'cuidador')
-     * @ORM\JoinColumn(name="id", referencedColumnName="id", onDelete="CASCADE")
-     * @ORM\Id
-     */
-    private ?Persona $persona = null;
-
     public function getId(): ?int
     {
         return $this->id;
@@ -145,17 +138,6 @@ class Cuidador
     {
         $this->Fuma = $Fuma;
 
-        return $this;
-    }
-
-    public function getPersona(): ?Persona
-    {
-        return $this->persona;
-    }
-
-    public function setPersona(?Persona $persona): static
-    {
-        $this->persona = $persona;
         return $this;
     }
 }
