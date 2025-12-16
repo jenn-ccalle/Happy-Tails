@@ -24,6 +24,22 @@ class Raza
      */
     private $Nombre;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Mascota::class, mappedBy="Raza")
+     */
+    private $mascotas;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Especie::class, inversedBy="razas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Especie;
+
+    public function __construct()
+    {
+        $this->mascotas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +53,48 @@ class Raza
     public function setNombre(string $Nombre): self
     {
         $this->Nombre = $Nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mascota>
+     */
+    public function getMascotas(): Collection
+    {
+        return $this->mascotas;
+    }
+
+    public function addMascota(Mascota $mascota): self
+    {
+        if (!$this->mascotas->contains($mascota)) {
+            $this->mascotas[] = $mascota;
+            $mascota->setRaza($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMascota(Mascota $mascota): self
+    {
+        if ($this->mascotas->removeElement($mascota)) {
+            // set the owning side to null (unless already changed)
+            if ($mascota->getRaza() === $this) {
+                $mascota->setRaza(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getEspecie(): ?Especie
+    {
+        return $this->Especie;
+    }
+
+    public function setEspecie(?Especie $Especie): self
+    {
+        $this->Especie = $Especie;
 
         return $this;
     }

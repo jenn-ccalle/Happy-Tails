@@ -44,6 +44,52 @@ class Contratacion
      */
     private $FechaFinServicio;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Servicio::class, inversedBy="contratacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Servicio;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cliente::class, inversedBy="contratacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Cliente;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cuidador::class, inversedBy="contratacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Cuidador;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=MetodoPago::class, inversedBy="contratacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $MetodoPago;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=EstadoContratacion::class, inversedBy="contratacions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $EstadoContratacion;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Mascota::class, inversedBy="contratacions")
+     */
+    private $Mascota;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Opinion::class, mappedBy="Contratacion")
+     */
+    private $opinions;
+
+    public function __construct()
+    {
+        $this->Mascota = new ArrayCollection();
+        $this->opinions = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +151,120 @@ class Contratacion
     public function setFechaFinServicio(\DateTimeInterface $FechaFinServicio): self
     {
         $this->FechaFinServicio = $FechaFinServicio;
+
+        return $this;
+    }
+
+    public function getServicio(): ?Servicio
+    {
+        return $this->Servicio;
+    }
+
+    public function setServicio(?Servicio $Servicio): self
+    {
+        $this->Servicio = $Servicio;
+
+        return $this;
+    }
+
+    public function getCliente(): ?Cliente
+    {
+        return $this->Cliente;
+    }
+
+    public function setCliente(?Cliente $Cliente): self
+    {
+        $this->Cliente = $Cliente;
+
+        return $this;
+    }
+
+    public function getCuidador(): ?Cuidador
+    {
+        return $this->Cuidador;
+    }
+
+    public function setCuidador(?Cuidador $Cuidador): self
+    {
+        $this->Cuidador = $Cuidador;
+
+        return $this;
+    }
+
+    public function getMetodoPago(): ?MetodoPago
+    {
+        return $this->MetodoPago;
+    }
+
+    public function setMetodoPago(?MetodoPago $MetodoPago): self
+    {
+        $this->MetodoPago = $MetodoPago;
+
+        return $this;
+    }
+
+    public function getEstadoContratacion(): ?EstadoContratacion
+    {
+        return $this->EstadoContratacion;
+    }
+
+    public function setEstadoContratacion(?EstadoContratacion $EstadoContratacion): self
+    {
+        $this->EstadoContratacion = $EstadoContratacion;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mascota>
+     */
+    public function getMascota(): Collection
+    {
+        return $this->Mascota;
+    }
+
+    public function addMascotum(Mascota $mascotum): self
+    {
+        if (!$this->Mascota->contains($mascotum)) {
+            $this->Mascota[] = $mascotum;
+        }
+
+        return $this;
+    }
+
+    public function removeMascotum(Mascota $mascotum): self
+    {
+        $this->Mascota->removeElement($mascotum);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Opinion>
+     */
+    public function getOpinions(): Collection
+    {
+        return $this->opinions;
+    }
+
+    public function addOpinion(Opinion $opinion): self
+    {
+        if (!$this->opinions->contains($opinion)) {
+            $this->opinions[] = $opinion;
+            $opinion->setContratacion($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpinion(Opinion $opinion): self
+    {
+        if ($this->opinions->removeElement($opinion)) {
+            // set the owning side to null (unless already changed)
+            if ($opinion->getContratacion() === $this) {
+                $opinion->setContratacion(null);
+            }
+        }
 
         return $this;
     }

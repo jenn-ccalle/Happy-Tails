@@ -24,6 +24,16 @@ class TamanoMascota
      */
     private $Nombre;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Mascota::class, mappedBy="TamanoMascota")
+     */
+    private $mascotas;
+
+    public function __construct()
+    {
+        $this->mascotas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +47,36 @@ class TamanoMascota
     public function setNombre(string $Nombre): self
     {
         $this->Nombre = $Nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mascota>
+     */
+    public function getMascotas(): Collection
+    {
+        return $this->mascotas;
+    }
+
+    public function addMascota(Mascota $mascota): self
+    {
+        if (!$this->mascotas->contains($mascota)) {
+            $this->mascotas[] = $mascota;
+            $mascota->setTamanoMascota($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMascota(Mascota $mascota): self
+    {
+        if ($this->mascotas->removeElement($mascota)) {
+            // set the owning side to null (unless already changed)
+            if ($mascota->getTamanoMascota() === $this) {
+                $mascota->setTamanoMascota(null);
+            }
+        }
 
         return $this;
     }

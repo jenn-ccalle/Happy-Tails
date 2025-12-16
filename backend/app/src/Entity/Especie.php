@@ -24,6 +24,16 @@ class Especie
      */
     private $Nombre;
 
+    /**
+     * @ORM\OneToMany(targetEntity=Raza::class, mappedBy="Especie")
+     */
+    private $razas;
+
+    public function __construct()
+    {
+        $this->razas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -37,6 +47,36 @@ class Especie
     public function setNombre(string $Nombre): self
     {
         $this->Nombre = $Nombre;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Raza>
+     */
+    public function getRazas(): Collection
+    {
+        return $this->razas;
+    }
+
+    public function addRaza(Raza $raza): self
+    {
+        if (!$this->razas->contains($raza)) {
+            $this->razas[] = $raza;
+            $raza->setEspecie($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRaza(Raza $raza): self
+    {
+        if ($this->razas->removeElement($raza)) {
+            // set the owning side to null (unless already changed)
+            if ($raza->getEspecie() === $this) {
+                $raza->setEspecie(null);
+            }
+        }
 
         return $this;
     }

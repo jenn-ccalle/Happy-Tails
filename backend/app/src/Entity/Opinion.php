@@ -32,6 +32,24 @@ class Opinion
      */
     private $FechaHora;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Cuidador::class, inversedBy="opinions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Cuidador;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Cliente::class, inversedBy="opinions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Cliente;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Contratacion::class, inversedBy="opinions")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Contratacion;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +87,42 @@ class Opinion
     public function setFechaHora(\DateTimeInterface $FechaHora): self
     {
         $this->FechaHora = $FechaHora;
+
+        return $this;
+    }
+
+    public function getCuidador(): ?Cuidador
+    {
+        return $this->Cuidador;
+    }
+
+    public function setCuidador(?Cuidador $Cuidador): self
+    {
+        $this->Cuidador = $Cuidador;
+
+        return $this;
+    }
+
+    public function getCliente(): ?Cliente
+    {
+        return $this->Cliente;
+    }
+
+    public function setCliente(?Cliente $Cliente): self
+    {
+        $this->Cliente = $Cliente;
+
+        return $this;
+    }
+
+    public function getContratacion(): ?Contratacion
+    {
+        return $this->Contratacion;
+    }
+
+    public function setContratacion(?Contratacion $Contratacion): self
+    {
+        $this->Contratacion = $Contratacion;
 
         return $this;
     }

@@ -27,6 +27,18 @@ class DipsCuidador
      */
     private $Disponible;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Cuidador::class, inversedBy="dispCuidadores")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Cuidador;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Servicio::class, inversedBy="dipsCuidadors")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Servicio;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +64,30 @@ class DipsCuidador
     public function setDisponible(bool $Disponible): self
     {
         $this->Disponible = $Disponible;
+
+        return $this;
+    }
+
+    public function getCuidador(): ?Cuidador
+    {
+        return $this->Cuidador;
+    }
+
+    public function setCuidador(?Cuidador $Cuidador): self
+    {
+        $this->Cuidador = $Cuidador;
+
+        return $this;
+    }
+
+    public function getServicio(): ?Servicio
+    {
+        return $this->Servicio;
+    }
+
+    public function setServicio(?Servicio $Servicio): self
+    {
+        $this->Servicio = $Servicio;
 
         return $this;
     }

@@ -104,6 +104,44 @@ class Mascota
      */
     private $TiempoNecesidades;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Persona::class, inversedBy="mascotas")
+     */
+    private $Persona;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Raza::class, inversedBy="mascotas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Raza;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Necesidades::class, inversedBy="mascotas")
+     */
+    private $Necesidades;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TamanoMascota::class, inversedBy="mascotas")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $TamanoMascota;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Contratacion::class, mappedBy="Mascota")
+     */
+    private $contratacions;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=ContratacionMascota::class, mappedBy="Mascota")
+     */
+    private $contratacionMascotas;
+
+    public function __construct()
+    {
+        $this->contratacions = new ArrayCollection();
+        $this->contratacionMascotas = new ArrayCollection();
+    }
+
     public function getId(): ?int
     {
         return $this->id;
@@ -309,6 +347,108 @@ class Mascota
     public function setTiempoNecesidades(int $TiempoNecesidades): self
     {
         $this->TiempoNecesidades = $TiempoNecesidades;
+
+        return $this;
+    }
+
+    public function getPersona(): ?Persona
+    {
+        return $this->Persona;
+    }
+
+    public function setPersona(?Persona $Persona): self
+    {
+        $this->Persona = $Persona;
+
+        return $this;
+    }
+
+    public function getRaza(): ?Raza
+    {
+        return $this->Raza;
+    }
+
+    public function setRaza(?Raza $Raza): self
+    {
+        $this->Raza = $Raza;
+
+        return $this;
+    }
+
+    public function getNecesidades(): ?Necesidades
+    {
+        return $this->Necesidades;
+    }
+
+    public function setNecesidades(?Necesidades $Necesidades): self
+    {
+        $this->Necesidades = $Necesidades;
+
+        return $this;
+    }
+
+    public function getTamanoMascota(): ?TamanoMascota
+    {
+        return $this->TamanoMascota;
+    }
+
+    public function setTamanoMascota(?TamanoMascota $TamanoMascota): self
+    {
+        $this->TamanoMascota = $TamanoMascota;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contratacion>
+     */
+    public function getContratacions(): Collection
+    {
+        return $this->contratacions;
+    }
+
+    public function addContratacion(Contratacion $contratacion): self
+    {
+        if (!$this->contratacions->contains($contratacion)) {
+            $this->contratacions[] = $contratacion;
+            $contratacion->addMascotum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratacion(Contratacion $contratacion): self
+    {
+        if ($this->contratacions->removeElement($contratacion)) {
+            $contratacion->removeMascotum($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, ContratacionMascota>
+     */
+    public function getContratacionMascotas(): Collection
+    {
+        return $this->contratacionMascotas;
+    }
+
+    public function addContratacionMascota(ContratacionMascota $contratacionMascota): self
+    {
+        if (!$this->contratacionMascotas->contains($contratacionMascota)) {
+            $this->contratacionMascotas[] = $contratacionMascota;
+            $contratacionMascota->addMascotum($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratacionMascota(ContratacionMascota $contratacionMascota): self
+    {
+        if ($this->contratacionMascotas->removeElement($contratacionMascota)) {
+            $contratacionMascota->removeMascotum($this);
+        }
 
         return $this;
     }

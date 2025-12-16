@@ -1,0 +1,130 @@
+
+    /* Estilos personalizados */
+    .card {
+        border-radius: 16px;
+    }
+    
+    .form-control:focus,
+    .form-select:focus {
+        border-color: #FF8C69;
+        box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
+    }
+    
+    .btn-primary {
+        background-color: #FF8C69;
+        border-color: #FF8C69;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        letter-spacing: 0.3px;
+    }
+    
+    .btn-primary:hover {
+        background-color: #E67A5A;
+        border-color: #E67A5A;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(255, 140, 105, 0.4);
+    }
+
+    .btn-outline-secondary {
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-outline-secondary:hover {
+        transform: translateY(-1px);
+    }
+    
+    .form-check-input:checked {
+        background-color: #FF8C69;
+        border-color: #FF8C69;
+    }
+
+    .form-check-input:focus {
+        border-color: #FF8C69;
+        box-shadow: 0 0 0 0.2rem rgba(255, 140, 105, 0.25);
+    }
+
+    .text-primary {
+        color: #FF8C69 !important;
+    }
+
+    .text-primary:hover {
+        color: #E67A5A !important;
+    }
+
+    .border-bottom {
+        border-color: #e9ecef !important;
+    }
+
+    .form-label {
+        font-weight: 500;
+        color: #495057;
+        margin-bottom: 0.5rem;
+    }
+
+    .form-text {
+        font-size: 0.875rem;
+        color: #6c757d;
+    }
+
+    h5 svg {
+        vertical-align: middle;
+    }
+
+    .alert-info {
+        background-color: #e7f5ff;
+        border-color: #b8e0ff;
+        color: #0c5585;
+    }
+
+    /* Mejora visual para los checkboxes */
+    .form-check {
+        padding-left: 1.8rem;
+    }
+
+    .form-check-input {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.15rem;
+    }
+
+    .form-check-label {
+        padding-left: 0.5rem;
+        line-height: 1.6;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .card-body {
+            padding: 1.5rem !important;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .btn {
+            width: 100%;
+        }
+
+        .d-flex.gap-3 {
+            flex-direction: column;
+            gap: 0.75rem !important;
+        }
+    }
+
+    /* Animación sutil al cargar */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    .card {
+        animation: fadeInUp 0.5s ease-out;
+    }

@@ -47,6 +47,12 @@ class Paseo
      */
     private $Nombre;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Servicio::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Servicio;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -120,6 +126,18 @@ class Paseo
     public function setNombre(?string $Nombre): self
     {
         $this->Nombre = $Nombre;
+
+        return $this;
+    }
+
+    public function getServicio(): ?Servicio
+    {
+        return $this->Servicio;
+    }
+
+    public function setServicio(Servicio $Servicio): self
+    {
+        $this->Servicio = $Servicio;
 
         return $this;
     }

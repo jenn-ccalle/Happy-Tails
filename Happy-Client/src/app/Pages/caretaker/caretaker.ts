@@ -7,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrl: './caretaker.css',
 })
 export class Caretaker {
+  cancelar() :void{
 
+  }
 }

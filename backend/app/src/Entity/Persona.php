@@ -63,6 +63,26 @@ class Persona
      * @ORM\Column(type="string", length=150)
      */
     private $Email;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Cliente::class, mappedBy="Persona", cascade={"persist", "remove"})
+     */
+    private $cliente;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Cuidador::class, mappedBy="Persona", cascade={"persist", "remove"})
+     */
+    private $cuidador;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Mascota::class, mappedBy="Persona")
+     */
+    private $mascotas;
+
+    public function __construct()
+    {
+        $this->mascotas = new ArrayCollection();
+    }
     
     public function getId(): ?int
     {
@@ -161,6 +181,70 @@ class Persona
     public function setEmail(string $Email): self
     {
         $this->Email = $Email;
+
+        return $this;
+    }
+
+    public function getCliente(): ?Cliente
+    {
+        return $this->cliente;
+    }
+
+    public function setCliente(Cliente $cliente): self
+    {
+        // set the owning side of the relation if necessary
+        if ($cliente->getPersona() !== $this) {
+            $cliente->setPersona($this);
+        }
+
+        $this->cliente = $cliente;
+
+        return $this;
+    }
+
+    public function getCuidador(): ?Cuidador
+    {
+        return $this->cuidador;
+    }
+
+    public function setCuidador(Cuidador $cuidador): self
+    {
+        // set the owning side of the relation if necessary
+        if ($cuidador->getPersona() !== $this) {
+            $cuidador->setPersona($this);
+        }
+
+        $this->cuidador = $cuidador;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Mascota>
+     */
+    public function getMascotas(): Collection
+    {
+        return $this->mascotas;
+    }
+
+    public function addMascota(Mascota $mascota): self
+    {
+        if (!$this->mascotas->contains($mascota)) {
+            $this->mascotas[] = $mascota;
+            $mascota->setPersona($this);
+        }
+
+        return $this;
+    }
+
+    public function removeMascota(Mascota $mascota): self
+    {
+        if ($this->mascotas->removeElement($mascota)) {
+            // set the owning side to null (unless already changed)
+            if ($mascota->getPersona() === $this) {
+                $mascota->setPersona(null);
+            }
+        }
 
         return $this;
     }

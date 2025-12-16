@@ -22,11 +22,11 @@
                             </div>
                         </div>
                     </div>
-                    <div class="d-flex gap-5 mb-3" id="estancias">
-                        <div>
+                    <div class="d-flex gap-5 mb-3 " id="estancias">
+                        <div class="">
                             <p><strong>Larga estancia:</strong></p>
-                            <div class="d-flex gap-5">
-                                <div>
+                            <div class="d-flex gap-5 est">
+                                <div class="">
                                     <input type="radio" name="servicio" id="alojamiento" value="alojamiento" class="servicio-radio">
                                     <label for="alojamiento" class="estancia">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" aria-label="Alojamiento mascotas icono" viewBox="0 0 512 512">
@@ -35,7 +35,7 @@
                                         <p>Alojamiento</p>
                                     </label>
                                 </div>
-                                <div>
+                                <div class="">
                                     <input type="radio" name="servicio" id="domicilio-largo" value="domicilio-largo" class="servicio-radio">
                                     <label for="domicilio-largo" class="estancia">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" aria-label="Estancia a domicilio icono" viewBox="0 0 512 512">
@@ -46,10 +46,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="">
                             <p><strong>Corta estancia:</strong></p>
-                            <div class="d-flex gap-5">
-                                <div>
+                            <div class="d-flex gap-5 est">
+                                <div class="">
                                     <input type="radio" name="servicio" id="visitas" value="visitas" class="servicio-radio">
                                     <label for="visitas" class="estancia">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" aria-label="Icono visitas a domicilio" viewBox="0 0 512 512">
@@ -58,7 +58,7 @@
                                         <p>Visitas a domicilio</p>
                                     </label>
                                 </div>
-                                <div>
+                                <div class="">
                                     <input type="radio" name="servicio" id="paseo" value="paseo" class="servicio-radio">
                                     <label for="paseo" class="estancia">
                                         <svg xmlns="http://www.w3.org/2000/svg" height="24" width="24" aria-label="Icono paseo perros" viewBox="0 0 512 512">
@@ -76,40 +76,43 @@
                     </div>
                     <div id="fecha" class="mb-3">
                         <label for="fechas"><strong>Selecciona las fechas</strong></label>
-                        <div class="d-flex gap-4">
-                            <div class="containerDate">
-                                <input type="date" class="date" name="startDate" id="startDate">
-                            </div>
-                            <strong>→</strong>
-                            <div class="containerDate">
-                                <input type="date" class="date" name="endDate" id="endDate">
-                            </div>
+                        <div class="d-flex gap-4 contDate">
+                                <div class="containerDate ">
+                                    <input type="date" class="date" name="startDate" id="startDate">
+                                </div>
+                                <strong>→</strong>
+                                <div class="containerDate">
+                                    <input type="date" class="date" name="endDate" id="endDate">
+                                </div>  
                         </div>
                     </div>
                     <div id="tamano">
                         <p><strong>Mi mascota es</strong></p>
-                        <div class="d-flex gap-4">
-                            <label for="pequeno" class="tamano">
-                                <input type="checkbox" name="pequeno" id="pequeno" class="d-none">
-                                <p>Pequeño</p>
-                                <p>0 - 7 kg</p>
-                            </label>
-                            <label for="mediano" class="tamano">
-                                <input type="checkbox" name="mediano" id="mediano" class="d-none">
-                                <p>Mediano</p>
-                                <p>7 - 18 kg</p>
-                            </label>
-                            <label for="grande" class="tamano">
-                                <input type="checkbox" name="grande" id="grande" class="d-none">
-                                <p>Grande</p>
-                                <p>18 - 40 kg</p>
-                            </label>
-                            <label for="gigante" class="tamano">
-                                <input type="checkbox" name="gigante" id="gigante" class="d-none">
-                                <p>Gigante</p>
-                                <p>40+ kg</p>
-                            </label>
-                            <button type="submit" aria-label="Buscar" class="button flex-grow-1">Buscar</button>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <label for="pequeno" class="tamano col-md-2 mr-1">
+                                    <input type="checkbox" name="pequeno" id="pequeno" class="d-none">
+                                    <p>Pequeño</p>
+                                    <p>0 - 7 kg</p>
+                                </label>
+                                <label for="mediano" class="tamano col-md-2 mr-1">
+                                    <input type="checkbox" name="mediano" id="mediano" class="d-none">
+                                    <p>Mediano</p>
+                                    <p>7 - 18 kg</p>
+                                </label>
+                                <label for="grande" class="tamano col-md-2 mr-1">
+                                    <input type="checkbox" name="grande" id="grande" class="d-none">
+                                    <p>Grande</p>
+                                    <p>18 - 40 kg</p>
+                                </label>
+                                <label for="gigante" class="tamano col-md-2 mr-1">
+                                    <input type="checkbox" name="gigante" id="gigante" class="d-none">
+                                    <p>Gigante</p>
+                                    <p>40+ kg</p>
+                                </label>
+                                <button type="submit" aria-label="Buscar" class="button col-sm-3 flex-grow-1">Buscar</button>                                
+                            </div>
+
                         </div>
                     </div>
                     
@@ -120,8 +123,8 @@
 
 <section>
     <h3>Servicios para cada mascota</h3>
-    <div class="containerServicios container-fluid d-flex flex-wrap gap-4 mt-5">
-        <div class="d-flex gap-5 justify-content-center">
+    <div class="containerServicios d-flex flex-wrap gap-4 mt-5">
+        <div class="d-flex gap-5 justify-content-center serv">
             <div class="servicioComp">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" aria-label="Alojamiento mascotas icono" viewBox="0 0 512 512">
                     <path fill="#FB4D00" d="M200 48l112 0c4.4 0 8 3.6 8 8l0 40-128 0 0-40c0-4.4 3.6-8 8-8zm-56 8l0 424 224 0 0-424c0-30.9-25.1-56-56-56L200 0c-30.9 0-56 25.1-56 56zM416 96l0 384 32 0c35.3 0 64-28.7 64-64l0-256c0-35.3-28.7-64-64-64l-32 0zM96 480l0-384-32 0C28.7 96 0 124.7 0 160L0 416c0 35.3 28.7 64 64 64l32 0z"/>
@@ -141,7 +144,7 @@
                 </div>
             </div>
         </div>
-        <div class="d-flex gap-5 justify-content-center">
+        <div class="d-flex gap-5 justify-content-center serv">
             <div class="servicioComp">
                 <svg xmlns="http://www.w3.org/2000/svg" height="40" width="40" aria-label="Icono visitas a domicilio" viewBox="0 0 512 512">
                     <path fill="#FB4D00" d="M0 176c0-35.3 28.7-64 64-64 .5 0 1.1 0 1.6 0 7.4-36.5 39.7-64 78.4-64 15 0 29 4.1 40.9 11.2 13.3-25.7 40.1-43.2 71.1-43.2s57.8 17.6 71.1 43.2c12-7.1 26-11.2 40.9-11.2 38.7 0 71 27.5 78.4 64 .5 0 1.1 0 1.6 0 35.3 0 64 28.7 64 64 0 11.7-3.1 22.6-8.6 32L8.6 208C3.1 198.6 0 187.7 0 176zM0 283.4C0 268.3 12.3 256 27.4 256l457.1 0c15.1 0 27.4 12.3 27.4 27.4 0 70.5-44.4 130.7-106.7 154.1L403.5 452c-2 16-15.6 28-31.8 28l-231.5 0c-16.1 0-29.8-12-31.8-28l-1.8-14.4C44.4 414.1 0 353.9 0 283.4z"/>
@@ -166,15 +169,15 @@
 
 <section>
     <h3 class="mb-4">Opiniones de nuestros clientes</h3>
-    <div class="opiniones d-flex gap-5">
-        <div class="opinion">
+    <div class="opiniones gap-5">
+        <div class="opinion ">
             <p>
                 Mi cuidador es un encanto, responsable, atento y muy agradable. Es la primera vez que uso la aplicación y 
                 me alegro de que haya sido él con quien nos estrenamos Chispo y yo. ¡Seguiré contactándolo para los paseos!
             </p>
             <span class="blockquote-footer"> José M.</span>
         </div>
-        <div class="opinion">
+        <div class="opinion ">
             <p>
                 Mi cuidadora se ha ocupado muy bien de nuestro gato. Un gato que necesita administración de medicación diaria.
                 Nos ha enviado fotografías y comentarios, se nota que ha estado muy bien cuidado. Sin duda la recomendamos

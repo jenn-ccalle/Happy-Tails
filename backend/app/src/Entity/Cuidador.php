@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CuidadorRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -51,6 +53,34 @@ class Cuidador
      * @ORM\Column(type="smallint", nullable=true)
      */
     private $Fuma;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Persona::class, inversedBy="cuidador", cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Persona;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Contratacion::class, mappedBy="Cuidador")
+     */
+    private $contratacions;
+
+    /**
+     * @ORM\OneToMany(targetEntity=DipsCuidador::class, mappedBy="Cuidador")
+     */
+    private $dispCuidadores;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Opinion::class, mappedBy="Cuidador")
+     */
+    private $opinions;
+
+    public function __construct()
+    {
+        $this->contratacions = new ArrayCollection();
+        $this->dispCuidadores = new ArrayCollection();
+        $this->opinions = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -137,6 +167,108 @@ class Cuidador
     public function setFuma(?int $Fuma): self
     {
         $this->Fuma = $Fuma;
+
+        return $this;
+    }
+
+    public function getPersona(): ?Persona
+    {
+        return $this->Persona;
+    }
+
+    public function setPersona(Persona $Persona): self
+    {
+        $this->Persona = $Persona;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Contratacion>
+     */
+    public function getContratacions(): Collection
+    {
+        return $this->contratacions;
+    }
+
+    public function addContratacion(Contratacion $contratacion): self
+    {
+        if (!$this->contratacions->contains($contratacion)) {
+            $this->contratacions[] = $contratacion;
+            $contratacion->setCuidador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeContratacion(Contratacion $contratacion): self
+    {
+        if ($this->contratacions->removeElement($contratacion)) {
+            // set the owning side to null (unless already changed)
+            if ($contratacion->getCuidador() === $this) {
+                $contratacion->setCuidador(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, DipsCuidador>
+     */
+    public function getDispCuidadores(): Collection
+    {
+        return $this->dispCuidadores;
+    }
+
+    public function addDispCuidadore(DipsCuidador $dispCuidadore): self
+    {
+        if (!$this->dispCuidadores->contains($dispCuidadore)) {
+            $this->dispCuidadores[] = $dispCuidadore;
+            $dispCuidadore->setCuidador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeDispCuidadore(DipsCuidador $dispCuidadore): self
+    {
+        if ($this->dispCuidadores->removeElement($dispCuidadore)) {
+            // set the owning side to null (unless already changed)
+            if ($dispCuidadore->getCuidador() === $this) {
+                $dispCuidadore->setCuidador(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Opinion>
+     */
+    public function getOpinions(): Collection
+    {
+        return $this->opinions;
+    }
+
+    public function addOpinion(Opinion $opinion): self
+    {
+        if (!$this->opinions->contains($opinion)) {
+            $this->opinions[] = $opinion;
+            $opinion->setCuidador($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOpinion(Opinion $opinion): self
+    {
+        if ($this->opinions->removeElement($opinion)) {
+            // set the owning side to null (unless already changed)
+            if ($opinion->getCuidador() === $this) {
+                $opinion->setCuidador(null);
+            }
+        }
 
         return $this;
     }

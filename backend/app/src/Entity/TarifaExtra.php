@@ -22,6 +22,18 @@ class TarifaExtra
      */
     private $Valor;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=Servicio::class, inversedBy="tarifaExtras")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $Servicio;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=TipoTarifa::class, inversedBy="tarifaExtras")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $TipoTarifa;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +47,30 @@ class TarifaExtra
     public function setValor(string $Valor): self
     {
         $this->Valor = $Valor;
+
+        return $this;
+    }
+
+    public function getServicio(): ?Servicio
+    {
+        return $this->Servicio;
+    }
+
+    public function setServicio(?Servicio $Servicio): self
+    {
+        $this->Servicio = $Servicio;
+
+        return $this;
+    }
+
+    public function getTipoTarifa(): ?TipoTarifa
+    {
+        return $this->TipoTarifa;
+    }
+
+    public function setTipoTarifa(?TipoTarifa $TipoTarifa): self
+    {
+        $this->TipoTarifa = $TipoTarifa;
 
         return $this;
     }

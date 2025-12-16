@@ -1,0 +1,40 @@
+.container-fluid{
+    margin: 2rem;
+    height: 80vh;
+}
+.imgPerfil{
+    height: 150px;
+    width: 150px;
+    border-radius: 9999px;
+    border: none;
+    background-color: #49261D;
+}
+.btnEditar{
+    padding: 0.5rem 3rem;
+    background-color: #FB4D00;
+    border: none;
+    border-radius: 500px;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    color: #FFEDE3;
+    align-items: center;
+    gap: 10px;
+}
+.btnMascotas{
+    padding: 0.5rem 5rem;
+    width: 30%;
+    background-color: #FB4D00;
+    border: none;
+    border-radius: 500px;
+    height: 6vh;
+    display: flex;
+    justify-content: center;
+    color: #FFEDE3;
+    align-items: center;
+    gap: 10px;
+}
+button:hover{
+    background-color: #a83200;
+    transition: all 0.3s ease-in;
+}

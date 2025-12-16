@@ -150,3 +150,40 @@ section{
     background-color: #ffffff;
     width: 25%;
 }
+
+@media (max-width:1000px){
+    #estancias{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+}
+
+@media(max-width:860px){
+    .est{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .opiniones{
+        display: block;
+        justify-content: center;
+    }
+    .opinion{
+        width: 100%;
+        margin-bottom: 1rem;
+    }
+    .servicioComp{
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .contDate{
+        flex-wrap: wrap;
+    }
+}
+
+@media(max-width:400px){
+    .serv{
+        display: flex;
+        flex-wrap: wrap;
+    }
+}
